@@ -69,11 +69,11 @@ function Products() {
           </div>
           <div className="cart">
             <div className="price-section">
-              <p>NRs.{totalPrice.toFixed(3) + 0.1 * totalPrice.toFixed(3)}</p>
+              <p>NRs.{(totalPrice + 0.1 * totalPrice).toFixed(2)}</p>
               <p>NRs.{totalPrice.toFixed(2)}</p>
               <div className="discout-section">
                 <p>10% off</p>
-                <p>You save: NRs.{0.1 * totalPrice.toFixed(3)}</p>
+                <p>You save: NRs.{(0.1 * totalPrice.toFixed(3)).toFixed(2)}</p>
               </div>
             </div>
             <div className="add-cart">
@@ -103,6 +103,7 @@ function Products() {
     
           <div className="questions">
             <p>Search you queries related to this product</p>
+            <i class="fa fa-search"></i>
             <input placeholder="Your questions"></input>
           </div>
         </div>
