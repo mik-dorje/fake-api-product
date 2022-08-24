@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 import axios from "axios";
 
-const PRODUCTS_URL = "https://fakestoreapi.com/products/2";
+const PRODUCTS_URL = "https://fakestoreapi.com/products/14";
 
 const initialState = {
   products: [],

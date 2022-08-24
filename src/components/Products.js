@@ -54,7 +54,13 @@ function Products() {
         </div>
 
         <div className="right-part">
-          <p>{product.title}</p>
+          <div className="topTitle">
+            <p>{product.title}<span>#1 IN DISPLAY </span></p>
+            <div className="wishlist-btn-container">
+              <button className="wishlist-btn"><i class="fa fa-heart-o" aria-hidden="true"></i>A to wishlist</button>
+
+            </div>
+          </div>
           <div className="option">
             <p>
               Options:<span> Foldsack Backpack</span>
