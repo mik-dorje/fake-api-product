@@ -24,6 +24,17 @@
   margin: 15px 0;
 }
 
+
+.store-image{
+  display: flex;
+  flex-direction: column;
+
+}
+
+.store-image>img{
+  margin-bottom: 20px;
+}
+
 .subscription{
     display: flex;
     flex-direction: column;
@@ -50,3 +61,4 @@
 .subscription > input:focus{
     outline: none;
 }
+

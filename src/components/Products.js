@@ -1,4 +1,5 @@
-import { prettyDOM } from "@testing-library/react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -8,7 +9,6 @@ import {
   selectAllProducts,
   selectPrice,
   selectQuantity,
-  selectStatus,
 } from "../features/products/productsSlice";
 import "./Products.css";
 
@@ -99,6 +99,8 @@ function Products() {
             <ul>{descriptionElement}</ul>
           </div>
           {/* Search queries*/}
+
+    
           <div className="questions">
             <p>Search you queries related to this product</p>
             <input placeholder="Your questions"></input>
