@@ -1,0 +1,52 @@
+.footer-box {
+  background-color: #181818;
+
+  color: white;
+  font-family: "Poppins";
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 60px;
+  margin-top: 90px;
+}
+
+.footer-item-title {
+  font-weight: 500;
+  font-size: 18px;
+  margin: 15px 0;
+}
+
+.footer > div > p {
+  font-weight: 300;
+  font-size: 18px;
+  margin: 15px 0;
+}
+
+.subscription{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+
+}
+.subscription > p{
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+
+.subscription > input{
+    border: none;
+    width: 445px;
+    height: 57px;
+    margin-bottom: 60px;
+    padding: 15px;
+    font-size: 18px;
+}
+
+.subscription > input:focus{
+    outline: none;
+}
