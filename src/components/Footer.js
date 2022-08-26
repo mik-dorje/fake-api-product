@@ -70,7 +70,6 @@ const Footer = () => {
         <div className="stay">
           <h3 className="footer-item-title">STAY CONNECTED</h3>
           <p>
-            {" "}
             <i class="fa fa-map-marker" style={{ marginRight: 10 }}></i>
             Baneshwor, Kathmandu, Nepal
           </p>

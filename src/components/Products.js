@@ -1,6 +1,4 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addToCart,
@@ -12,16 +10,24 @@ import {
 } from "../features/products/productsSlice";
 import "./Products.css";
 
+import black1 from "../images/gallery/black-t.jpg";
+import black2 from "../images/gallery/black.jpg";
+import gray from "../images/gallery/gray.jpg";
+import red from "../images/gallery/red.jpg";
+
 function Products() {
   const dispatch = useDispatch();
   const product = useSelector(selectAllProducts);
   const totalQuantity = useSelector(selectQuantity);
   const totalPrice = useSelector(selectPrice);
 
+  const [bigImg, setBigImg] = useState("");
+
   useEffect(() => {
     console.log("useEffect called");
     dispatch(fetchProducts());
-  }, [dispatch]);
+    setBigImg(product.image);
+  }, [dispatch, product.image]);
 
   const descriptionList = product?.description?.split(".");
   descriptionList?.pop();
@@ -38,39 +44,82 @@ function Products() {
     dispatch(removeFromCart(product.price));
   };
 
+  const imageChange = (e) => {
+    setBigImg(e.target.src);
+    const imageOptions = document.querySelector(".color-options").childNodes;
+    for (var index = 0; index < imageOptions.length; index++) {
+      if (index === Number(e.target.id)) {
+        // console.log(imageOptions[index].classList);
+        imageOptions[index].classList.add("active-option");
+      } else {
+        imageOptions[index].classList.remove("active-option");
+      }
+    }
+  };
+
   return (
     <div className="container">
       <div className="product">
         <div className="big-photo">
-          <img className="big-image" src={product.image} alt={product.title} />
+          <img className="big-image" src={bigImg} alt={product.title} />
           <div className="image-transform">
-            <img src={product.image} alt={product.title}></img>
-            <img src={product.image} alt={product.title}></img>
-            <img src={product.image} alt={product.title}></img>
-            <img src={product.image} alt={product.title}></img>
-            <img src={product.image} alt={product.title}></img>
-            <img src={product.image} alt={product.title}></img>
+            <img src={bigImg} alt={product.title}></img>
+            <img src={bigImg} alt={product.title}></img>
+            <img src={bigImg} alt={product.title}></img>
+            <img src={bigImg} alt={product.title}></img>
+            <img src={bigImg} alt={product.title}></img>
+            <img src={bigImg} alt={product.title}></img>
           </div>
         </div>
 
         <div className="right-part">
           <div className="topTitle">
-            <p>{product.title}<span>#1 IN DISPLAY </span></p>
+            <p>
+              {product.title}
+              <span>#1 IN DISPLAY </span>
+            </p>
             <div className="wishlist-btn-container">
-              <button className="wishlist-btn"><i class="fa fa-heart-o" aria-hidden="true"></i>A to wishlist</button>
-
+              <button className="wishlist-btn">
+                <i class="fa fa-heart-o" aria-hidden="true"></i>Add to wishlist
+              </button>
             </div>
           </div>
           <div className="option">
             <p>
-              Options:<span> Foldsack Backpack</span>
+              Options:<span> Best T-Shirt</span>
             </p>
             <div className="color-options">
-              <img src={product.image} alt="firstimage"></img>
-              <img src={product.image} alt="secondimage"></img>
-              <img src={product.image} alt="thirdimage"></img>
-              <img src={product.image} alt="fourthimage"></img>
-              <img src={product.image} alt="fifthimage"></img>
+              <img
+                id="0"
+                onClick={(e) => imageChange(e)}
+                className="active-option"
+                src={product.image}
+                alt="firstimage"
+              ></img>
+              <img
+                id="1"
+                onClick={(e) => imageChange(e)}
+                src={black1}
+                alt="secondimage"
+              ></img>
+              <img
+                id="2"
+                onClick={(e) => imageChange(e)}
+                src={black2}
+                alt="thirdimage"
+              ></img>
+              <img
+                id="3"
+                onClick={(e) => imageChange(e)}
+                src={gray}
+                alt="fourthimage"
+              ></img>
+              <img
+                id="4"
+                onClick={(e) => imageChange(e)}
+                src={red}
+                alt="fifthimage"
+              ></img>
             </div>
           </div>
           <div className="cart">
@@ -79,7 +128,7 @@ function Products() {
               <p>NRs.{totalPrice.toFixed(2)}</p>
               <div className="discout-section">
                 <p>10% off</p>
-                <p>You save: NRs.{(0.1 * totalPrice.toFixed(3)).toFixed(2)}</p>
+                <p>You save: NRs.{(0.1 * totalPrice).toFixed(2)}</p>
               </div>
             </div>
             <div className="add-cart">
@@ -106,63 +155,10 @@ function Products() {
           </div>
           {/* Search queries*/}
 
-    
           <div className="questions">
             <p>Search you queries related to this product</p>
             <i class="fa fa-search"></i>
             <input placeholder="Your questions"></input>
-          </div>
-        </div>
-      </div>
-
-      {/*Description-specifications-Questions/Answers-Ratings & Reviews*/}
-      <div className="details-block">
-        <div className="heading-box">
-          <div className="headings">
-            <p>Description</p>
-            <p className="active-heading">Specifications</p>
-            <p>Questions/Answers</p>
-            <p>Rating & Reviews</p>
-          </div>
-        </div>
-      </div>
-      <div className="details">
-        <div className="technical-details">
-          <h3>Technical Details</h3>
-          <div>
-            <table>
-              <tr>
-                <th>Item Weight</th>
-                <td>29 pounds</td>
-              </tr>
-              <tr>
-                <th>Dimensions</th>
-                <td>38 x 40 x 31.5 inches</td>
-              </tr>
-              <tr>
-                <th>Item model number</th>
-                <td>BF29296BR-M52</td>
-              </tr>
-            </table>
-          </div>
-        </div>
-        <div className="technical-details">
-          <h3>Other Details</h3>
-          <div>
-            <table>
-              <tr>
-                <th>Item Weight</th>
-                <td>29 pounds</td>
-              </tr>
-              <tr>
-                <th>Dimensions</th>
-                <td>38 x 40 x 31.5 inches</td>
-              </tr>
-              <tr>
-                <th>Item model number</th>
-                <td>BF29296BR-M52</td>
-              </tr>
-            </table>
           </div>
         </div>
       </div>
